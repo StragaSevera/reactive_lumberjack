@@ -4,20 +4,26 @@ import TextBox from './TextBox'
 
 class BlogItem extends React.Component {
   render () {
+    const item = this.props.item
     return (
       <div>
+        {/*
+          Здесь все же деструктурируем, чтобы дважды
+          не делать свойство name,
+          которое должно идти в альт-текст
+        */}
         <Image
-          src={this.props.src}
-          width={this.props.width}
-          height={this.props.height}
-          alt={this.props.name}
+          src={item.image.src}
+          width={item.image.width}
+          height={item.image.height}
+          alt={item.name}
         />
         <br />
-        <TextBox text={this.props.name} />
+        <TextBox text={item.name} />
         <br />
-        <TextBox text={this.props.title} />
+        <TextBox text={item.title} />
         <br />
-        <TextBox text={this.props.post} />
+        <TextBox text={item.post} />
       </div>
     )
   }

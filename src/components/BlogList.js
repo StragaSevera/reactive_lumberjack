@@ -6,18 +6,10 @@ class BlogList extends React.Component {
   mapItems () {
     const items = this.props.items
     if (items) {
-      return R.addIndex(R.map)(
-        (item, i) => {
+      return R.map(
+        (item) => {
           return (
-            <BlogItem
-              src={item.src}
-              width={item.width}
-              height={item.height}
-              name={item.name}
-              title={item.title}
-              post={item.post}
-              key={i}
-            />
+            <BlogItem item={item} key={item.id} />
           )
         },
         items
