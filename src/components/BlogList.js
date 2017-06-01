@@ -13,12 +13,10 @@ class BlogList extends React.Component {
   
   // Биндим при помощи transform-class-properties
   likeItem = (id) => {
-    return () => {
-      const lensId = lensMatching(R.propEq('id', id))
-      const likeLens = R.compose(R.lensProp('items'), lensId, R.lensPath(['meta', 'likes']))
-      
-      this.setState(R.over(likeLens, R.inc, this.state))
-    }
+    const lensId = lensMatching(R.propEq('id', id))
+    const likeLens = R.compose(R.lensProp('items'), lensId, R.lensPath(['meta', 'likes']))
+    
+    return () => this.setState(R.over(likeLens, R.inc, this.state))
   }
   
   mapItems () {
