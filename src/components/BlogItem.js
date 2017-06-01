@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from './Image'
 import TextBox from './TextBox'
+import ItemMeta from './ItemMeta'
 
 class BlogItem extends React.Component {
   render () {
@@ -16,14 +17,11 @@ class BlogItem extends React.Component {
           src={item.image.src}
           width={item.image.width}
           height={item.image.height}
-          alt={item.name}
+          alt={item.meta.name}
         />
-        <br />
-        <TextBox text={item.name} />
-        <br />
-        <TextBox text={item.title} />
-        <br />
-        <TextBox text={item.post} />
+        <ItemMeta meta={item.meta}/>
+        <TextBox text={item.title} newline />
+        <TextBox text={item.post} newline />
       </div>
     )
   }

@@ -157,8 +157,10 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         include: paths.appSrc,
-        loader: require.resolve('babel-loader')
-
+        loader: require.resolve('babel-loader'),
+        query: {
+          plugins: ['transform-class-properties']
+        }
       },
       // The notation here is somewhat confusing.
       // "postcss" loader applies autoprefixer to our CSS.
