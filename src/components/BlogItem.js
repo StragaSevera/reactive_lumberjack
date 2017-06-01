@@ -22,6 +22,8 @@ class BlogItem extends React.Component {
         <ItemMeta meta={item.meta}/>
         <TextBox text={item.title} newline />
         <TextBox text={item.post} newline />
+        <input type="button" onClick={item.likeAction} value="like" />
+        <br />
       </div>
     )
   }
