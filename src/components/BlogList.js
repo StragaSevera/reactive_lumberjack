@@ -1,5 +1,6 @@
 import React from 'react'
 import R from 'ramda'
+import PropTypes from 'prop-types'
 import BlogItem from './BlogItem'
 import {lensMatching} from '../lib/ramda-extensions'
 
@@ -44,6 +45,10 @@ class BlogList extends React.Component {
         {this.mapItems()}
       </div>
     )
+  }
+
+  static propTypes = {
+    items: PropTypes.array
   }
 }
 

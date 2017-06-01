@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Image from './Image'
 import TextBox from './TextBox'
 import ItemMeta from './ItemMeta'
@@ -26,6 +27,18 @@ class BlogItem extends React.Component {
         <br />
       </div>
     )
+  }
+
+  // Я правильно понимаю, что перепроверять то, что мы отправляем
+  // в Image и ItemMeta, не стоит, ибо оно проверяется в них и так?
+  static propTypes = {
+    item: PropTypes.shape({
+      image: PropTypes.object.isRequired,
+      meta: PropTypes.object.isRequired,
+      title: PropTypes.string.isRequired,
+      post: PropTypes.string.isRequired,
+      likeAction: PropTypes.func.isRequired,
+    })
   }
 }
 
