@@ -2,32 +2,19 @@ import React from 'react'
 import R from 'ramda'
 import PropTypes from 'prop-types'
 import BlogItem from './BlogItem'
-import {lensMatching} from '../lib/ramda-extensions'
+import PieChart from './PieChart'
 
 class BlogList extends React.Component {
-  constructor (props) {
-    super(props)
-    
-    this.state = R.clone(props)
-  }
-  
-  // Биндим при помощи transform-class-properties
-  likeItem = (id) => {
-    const lensId = lensMatching(R.propEq('id', id))
-    const likeLens = R.compose(R.lensProp('items'), lensId, R.lensPath(['meta', 'likes']))
-    
-    return () => this.setState(R.over(likeLens, R.inc, this.state))
-  }
-  
   mapItems () {
-    const items = this.state.items
+    const items = this.props.items
     if (items) {
       return R.map(
         (item) => {
           return (
             <BlogItem 
-              item={R.merge(item, {likeAction: this.likeItem(item.id)})} 
-              key={item.id} 
+              item={item}
+              key={item.id}
+              likeAction={this.props.likeAction}
             />
           )
         },
@@ -41,12 +28,14 @@ class BlogList extends React.Component {
     return (
       <div>
         {this.mapItems()}
+        <PieChart items={this.props.items}/>
       </div>
     )
   }
 
   static propTypes = {
-    items: PropTypes.array
+    items: PropTypes.array,
+    likeAction: PropTypes.func.isRequired
   }
 }
 
