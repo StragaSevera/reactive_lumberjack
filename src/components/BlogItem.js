@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Image from './Image'
 import TextBox from './TextBox'
 import ItemMeta from './ItemMeta'
-import Like from '../Like'
+import Like from './Like'
 
 class BlogItem extends React.Component {
   render () {
@@ -24,7 +24,7 @@ class BlogItem extends React.Component {
         <ItemMeta meta={item.meta}/>
         <TextBox text={item.title} newline />
         <TextBox text={item.post} newline />
-        <Like id={item.id} likeAction={this.props.likeAction}/>
+        <Like likeAction={this.props.likeAction}/>
         <br />
       </div>
     )

@@ -14,7 +14,7 @@ class BlogList extends React.Component {
             <BlogItem 
               item={item}
               key={item.id}
-              likeAction={this.props.likeAction}
+              likeAction={this.props.likeAction(item.id)}
             />
           )
         },
