@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Image from './Image'
 import TextBox from './TextBox'
 import ItemMeta from './ItemMeta'
+import Like from './Like'
 
 class BlogItem extends React.Component {
   render () {
@@ -23,7 +24,7 @@ class BlogItem extends React.Component {
         <ItemMeta meta={item.meta}/>
         <TextBox text={item.title} newline />
         <TextBox text={item.post} newline />
-        <input type="button" onClick={item.likeAction} value="like" />
+        <Like likeAction={this.props.likeAction}/>
         <br />
       </div>
     )
@@ -37,8 +38,8 @@ class BlogItem extends React.Component {
       meta: PropTypes.object.isRequired,
       title: PropTypes.string.isRequired,
       post: PropTypes.string.isRequired,
-      likeAction: PropTypes.func.isRequired,
-    })
+    }),
+    likeAction: PropTypes.func.isRequired
   }
 }
 
