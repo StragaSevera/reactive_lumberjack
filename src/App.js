@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import BlogPage from './BlogPage'
+import BlogPage from './components/widgets/BlogPage'
 
 class App extends Component {
   render () {

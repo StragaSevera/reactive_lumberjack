@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Image from './Image'
-import TextBox from './TextBox'
-import ItemMeta from './ItemMeta'
-import Like from './Like'
+import Image from './elements/Image'
+import TextBox from './elements/TextBox'
+import ItemMeta from './elements/Meta'
+import Like from './elements/Like'
 
 class BlogItem extends React.Component {
   render () {
@@ -37,7 +37,7 @@ class BlogItem extends React.Component {
       image: PropTypes.object.isRequired,
       meta: PropTypes.object.isRequired,
       title: PropTypes.string.isRequired,
-      post: PropTypes.string.isRequired,
+      post: PropTypes.string.isRequired
     }),
     likeAction: PropTypes.func.isRequired
   }

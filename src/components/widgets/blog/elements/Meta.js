@@ -2,12 +2,13 @@ import React from 'react'
 import Moment from 'moment'
 import PropTypes from 'prop-types'
 import TextBox from './TextBox'
+import { DATE_DEFAULT_FORMAT } from '~/src/constants/date'
 
 class ItemMeta extends React.Component {
   formatDate (date) {
-    return Moment(date).format('D MMMM YYYY, H:mm:ss')
+    return Moment(date).format(DATE_DEFAULT_FORMAT)
   }
-  
+
   render () {
     const meta = this.props.meta
     return (
@@ -15,17 +16,17 @@ class ItemMeta extends React.Component {
         <TextBox text={meta.name} newline />
         <TextBox text={`Created: ${this.formatDate(meta.dateCreatedAt)}`} newline />
         {
-          !!meta.dateUpdatedAt && meta.dateCreatedAt < meta.dateUpdatedAt && 
-          ( <TextBox text={`Updated: ${this.formatDate(meta.dateUpdatedAt)}`} newline /> )
+          !!meta.dateUpdatedAt && meta.dateCreatedAt < meta.dateUpdatedAt &&
+          (<TextBox text={`Updated: ${this.formatDate(meta.dateUpdatedAt)}`} newline />)
         }
         {
           !!meta.likes && meta.likes > 0 &&
-          ( <TextBox text={`Likes: ${meta.likes}`} newline /> )
+          (<TextBox text={`Likes: ${meta.likes}`} newline />)
         }
       </div>
     )
   }
-  
+
   static propTypes = {
     meta: PropTypes.shape({
       name: PropTypes.string.isRequired,

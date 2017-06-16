@@ -1,7 +1,7 @@
 import React from 'react'
 import R from 'ramda'
 import PropTypes from 'prop-types'
-import BlogItem from './BlogItem'
+import BlogItem from './Item'
 import PieChart from './PieChart'
 
 class BlogList extends React.Component {
@@ -11,7 +11,7 @@ class BlogList extends React.Component {
       return R.map(
         (item) => {
           return (
-            <BlogItem 
+            <BlogItem
               item={item}
               key={item.id}
               likeAction={this.props.likeAction(item.id)}

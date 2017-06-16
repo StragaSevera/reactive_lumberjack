@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const TextBox = ({text, newline}) => {
-  let result = ( <span>{text}</span> )
+  let result = (<span>{text}</span>)
   if (newline) {
-    result = ( <p>{result}</p> )
+    result = (<p>{result}</p>)
   }
   return result
 }
