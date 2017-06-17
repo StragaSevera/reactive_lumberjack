@@ -5,6 +5,8 @@
 
 # dist
 /public/bundle.js
+/public/styles.css
+/vendor/semantic/dist
 
 # testing
 /coverage

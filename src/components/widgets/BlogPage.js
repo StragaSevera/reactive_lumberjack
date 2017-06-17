@@ -1,9 +1,13 @@
 import React from 'react'
-import BlogList from './blog/List'
 import R from 'ramda'
 import {lensMatching} from '~/vendor/ramda-extensions'
-
 import {items} from '../../constants/static/items'
+
+import style from './BlogPage.css'
+
+import { Grid, GridRow, GridColumn } from 'semantic-ui-react'
+import List from './blog/List'
+import PieChart from './blog/PieChart'
 
 class BlogPage extends React.Component {
   constructor (props) {
@@ -21,7 +25,19 @@ class BlogPage extends React.Component {
   }
 
   render () {
-    return (<BlogList items={this.state.items} likeAction={this.likeAction}/>)
+    console.log(R.keys(style)) // проверяем, пришло ли хоть что-нибудь от модуля CSS
+    return (
+      <Grid columns={2}>
+        <GridRow>
+          <GridColumn width={8}>
+            <List items={this.state.items} likeAction={this.likeAction}/>
+          </GridColumn>
+          <GridColumn width={4}>
+            <PieChart items={this.state.items}/>
+          </GridColumn>
+        </GridRow>
+      </Grid>
+    )
   }
 }
 

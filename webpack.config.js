@@ -1,8 +1,10 @@
 /*eslint-disable*/
-var path = require('path')
-var webpack = require('webpack')
+const path = require('path')
+const webpack = require('webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
+  devtool: 'source-map',
   entry: [
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:3000',
@@ -25,10 +27,13 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loaders: [
-          'style-loader',
-          'css-loader?importLoaders=1'
-        ]
+        loader: ExtractTextPlugin.extract(
+          {
+            fallback: 'style-loader',
+            // use: 'css-loader?modules&importLoaders=1&localIdentName=[hash:base64:5]&minimize' // подключаем модули
+            use: 'css-loader' // или отключаем
+          }
+        )
       },
       { 
         test: /\.(eot|png|ttf|woff|woff2|svg)$/, 
@@ -50,6 +55,8 @@ module.exports = {
       __CLIENT__: true,
       __DEVELOPMENT__: true
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
+    new ExtractTextPlugin("styles.css")
   ]
 };
