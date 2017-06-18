@@ -1,10 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import BlogPage from './components/widgets/BlogPage'
 
-class App extends Component {
-  render () {
-    return (<BlogPage />)
-  }
+const App = () => {
+  return (<BlogPage />)
 }
 
 export default App

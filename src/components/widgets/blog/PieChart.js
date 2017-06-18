@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom'
 import R from 'ramda'
 import PropTypes from 'prop-types'
 import c3 from 'c3'
+import Sticker from 'react-stickyfill'
+
+import style from './PieChart.css'
 
 class PieChart extends React.Component {
   componentDidMount () {
@@ -29,19 +32,23 @@ class PieChart extends React.Component {
 
   dataColumns (items) {
     return R.map(
-      (item) => [item.meta.name, item.meta.likes],
+      (item) => [item.meta.name, item.likes],
       items
     )
   }
 
   render () {
     return (
-      <div ref="chart" />
+      <Sticker>
+        <div className={style.sticky}>
+          <div ref="chart" />
+        </div>
+      </Sticker>
     )
   }
 
   static propTypes = {
-    items: PropTypes.array
+    items: PropTypes.array.isRequired // без Shape, ибо на входе еще нет сгенерированного likeAction
   }
 }
 

@@ -3,8 +3,6 @@ import R from 'ramda'
 import {lensMatching} from '~/vendor/ramda-extensions'
 import {items} from '../../constants/static/items'
 
-import style from './BlogPage.css'
-
 import { Grid, GridRow, GridColumn } from 'semantic-ui-react'
 import List from './blog/List'
 import PieChart from './blog/PieChart'
@@ -19,15 +17,14 @@ class BlogPage extends React.Component {
   // Биндим при помощи transform-class-properties
   likeAction = (id) => {
     const lensId = lensMatching(R.propEq('id', id))
-    const likeLens = R.compose(R.lensProp('items'), lensId, R.lensPath(['meta', 'likes']))
+    const likeLens = R.compose(R.lensProp('items'), lensId, R.lensProp('likes'))
 
     return () => this.setState(R.over(likeLens, R.inc, this.state))
   }
 
   render () {
-    console.log(R.keys(style)) // проверяем, пришло ли хоть что-нибудь от модуля CSS
     return (
-      <Grid columns={2}>
+      <Grid columns={2} container={true}>
         <GridRow>
           <GridColumn width={8}>
             <List items={this.state.items} likeAction={this.likeAction}/>

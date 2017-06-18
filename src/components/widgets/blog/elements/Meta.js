@@ -14,14 +14,10 @@ class ItemMeta extends React.Component {
     return (
       <div>
         <TextBox text={meta.name} newline />
-        <TextBox text={`Created: ${this.formatDate(meta.dateCreatedAt)}`} newline />
+        <TextBox text={`Created: ${this.formatDate(meta.dateCreatedAt)}`} />
         {
           !!meta.dateUpdatedAt && meta.dateCreatedAt < meta.dateUpdatedAt &&
           (<TextBox text={`Updated: ${this.formatDate(meta.dateUpdatedAt)}`} newline />)
-        }
-        {
-          !!meta.likes && meta.likes > 0 &&
-          (<TextBox text={`Likes: ${meta.likes}`} newline />)
         }
       </div>
     )
@@ -31,8 +27,7 @@ class ItemMeta extends React.Component {
     meta: PropTypes.shape({
       name: PropTypes.string.isRequired,
       dateCreatedAt: PropTypes.instanceOf(Date).isRequired,
-      dateUpdatedAt: PropTypes.instanceOf(Date),
-      likes: PropTypes.number.isRequired
+      dateUpdatedAt: PropTypes.instanceOf(Date)
     })
   }
 }

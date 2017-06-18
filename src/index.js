@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
 import { AppContainer } from 'react-hot-loader'
-import '~/vendor/semantic/dist/semantic.css'
+import '~/vendor/semantic/dist/semantic.min.css'
 
 const rootElement = document.getElementById('root')
 

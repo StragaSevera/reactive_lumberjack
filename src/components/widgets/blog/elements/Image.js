@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Image as SemanticImage } from 'semantic-ui-react'
 
 const Image = ({src, width, height, alt}) => {
   return (
-    <img
+    <SemanticImage
       src={src}
       width={width}
       height={height}

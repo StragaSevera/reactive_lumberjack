@@ -2,6 +2,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const fs = require('fs')
 
 module.exports = {
   devtool: 'source-map',
@@ -23,21 +24,27 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        use: 'babel-loader'
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract(
-          {
-            fallback: 'style-loader',
-            // use: 'css-loader?modules&importLoaders=1&localIdentName=[hash:base64:5]&minimize' // подключаем модули
-            use: 'css-loader' // или отключаем
-          }
-        )
+        use: [
+          'style-loader?sourceMap',
+          'css-loader?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]'
+        ],
+        exclude: fs.realpathSync('./vendor/semantic')
       },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader?sourceMap',
+           'css-loader' // отключаем модули
+        ],
+        include: fs.realpathSync('./vendor/semantic')
+      },      
       { 
-        test: /\.(eot|png|ttf|woff|woff2|svg)$/, 
-        loader: 'url-loader'
+        test: /\.(eot|png|ttf|woff|woff2|svg)$/,
+        use: 'url-loader'
       }
     ]
   },
@@ -57,6 +64,9 @@ module.exports = {
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
-    new ExtractTextPlugin("styles.css")
+    new ExtractTextPlugin({
+      filename: 'styles.css',
+      allChunks: true
+    })
   ]
 };

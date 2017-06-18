@@ -1,16 +1,18 @@
 import React from 'react'
 import R from 'ramda'
 import PropTypes from 'prop-types'
-import BlogItem from './Item'
+import Item from './Item'
 
-class BlogList extends React.Component {
+import { List as SemanticList } from 'semantic-ui-react'
+
+class List extends React.Component {
   mapItems () {
     const items = this.props.items
     if (items) {
       return R.map(
         (item) => {
           return (
-            <BlogItem
+            <Item
               item={item}
               key={item.id}
               likeAction={this.props.likeAction(item.id)}
@@ -25,16 +27,16 @@ class BlogList extends React.Component {
   }
   render () {
     return (
-      <div>
+      <SemanticList divided={true}>
         {this.mapItems()}
-      </div>
+      </SemanticList>
     )
   }
 
   static propTypes = {
-    items: PropTypes.array,
+    items: PropTypes.array.isRequired, // без Shape, ибо на входе еще нет сгенерированного likeAction
     likeAction: PropTypes.func.isRequired
   }
 }
 
-export default BlogList
+export default List
