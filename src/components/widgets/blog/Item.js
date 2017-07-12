@@ -39,7 +39,7 @@ BlogItem.propTypes = {
     title: PropTypes.string.isRequired,
     post: PropTypes.string.isRequired
   }),
-  likeAction: PropTypes.func.isRequired
+  likeAction: PropTypes.func // не Required, ибо проблемы с Post
 }
 
 export default BlogItem

@@ -1,11 +1,11 @@
 import React from 'react'
 import R from 'ramda'
 import {lensMatching} from '~/vendor/ramda-extensions'
-import {items} from '../../constants/static/items'
+import {items} from '~/src/constants/static/items'
 
 import { Grid, GridRow, GridColumn } from 'semantic-ui-react'
-import List from './blog/List'
-import PieChart from './blog/PieChart'
+import List from './widgets/blog/List'
+import PieChart from './widgets/blog/PieChart'
 
 class BlogPage extends React.Component {
   constructor (props) {
