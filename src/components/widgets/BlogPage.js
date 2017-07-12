@@ -24,7 +24,7 @@ class BlogPage extends React.Component {
 
   render () {
     return (
-      <Grid columns={2} container={true}>
+      <Grid columns={2}>
         <GridRow>
           <GridColumn width={8}>
             <List items={this.state.items} likeAction={this.likeAction}/>

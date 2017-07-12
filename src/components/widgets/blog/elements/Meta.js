@@ -14,7 +14,7 @@ class ItemMeta extends React.Component {
     return (
       <div>
         <TextBox text={meta.name} newline />
-        <TextBox text={`Created: ${this.formatDate(meta.dateCreatedAt)}`} />
+        <TextBox text={`Created: ${this.formatDate(meta.dateCreatedAt)}`} newline />
         {
           !!meta.dateUpdatedAt && meta.dateCreatedAt < meta.dateUpdatedAt &&
           (<TextBox text={`Updated: ${this.formatDate(meta.dateUpdatedAt)}`} newline />)
