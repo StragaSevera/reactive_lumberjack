@@ -1,0 +1,35 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": [
+    "standard",
+    "plugin:destructuring/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": [
+    "class-property",
+    "react",
+    "destructuring"
+  ],
+  "rules": {
+    // React
+    "react/prefer-es6-class": 1,
+    "react/prefer-stateless-function": 1,
+    "react/prop-types": 1,
+    "react/jsx-uses-vars": 2,
+    "react/jsx-uses-react": 2,
+
+    "class-property/class-property-semicolon": [1, "never"]
+  }
+}

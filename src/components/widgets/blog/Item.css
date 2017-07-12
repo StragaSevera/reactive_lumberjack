@@ -1,0 +1,12 @@
+.flex {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.meta {
+    flex: 0 0 120px;
+}
+
+.text {
+    flex-grow: 1;
+}
