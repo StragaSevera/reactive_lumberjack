@@ -1,11 +1,9 @@
 import React from 'react'
-import BlogPage from './components/widgets/BlogPage'
-import MainLayout from './components/layouts/MainLayout'
+import {Router, browserHistory} from 'react-router'
+import routes from 'routes'
 
 const App = () => (
-  <MainLayout>
-    <BlogPage />
-  </MainLayout>
+  <Router history={browserHistory} routes={routes} />
 )
 
 export default App
