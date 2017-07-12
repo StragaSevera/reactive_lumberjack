@@ -26,8 +26,8 @@ class ItemMeta extends React.Component {
   static propTypes = {
     meta: PropTypes.shape({
       name: PropTypes.string.isRequired,
-      dateCreatedAt: PropTypes.instanceOf(Date).isRequired,
-      dateUpdatedAt: PropTypes.instanceOf(Date)
+      dateCreatedAt: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]).isRequired,
+      dateUpdatedAt: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string])
     })
   }
 }
