@@ -1,8 +1,9 @@
 import React from 'react'
-import BlogPage from './components/widgets/BlogPage'
+import {Router, browserHistory} from 'react-router'
+import routes from 'routes'
 
-const App = () => {
-  return (<BlogPage />)
-}
+const App = () => (
+  <Router history={browserHistory} routes={routes} />
+)
 
 export default App

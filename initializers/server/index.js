@@ -9,6 +9,7 @@ const port = 3000
 
 new WebpackDevServer(webpack(config), {
   hot: true,
+  historyApiFallback: true,
   publicPath: config.output.publicPath,
   contentBase: path.resolve(process.cwd(), 'public'),
   stats: {

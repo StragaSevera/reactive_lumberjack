@@ -1,10 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { ListItem, Header } from 'semantic-ui-react'
+
 import Image from './elements/Image'
 import TextBox from './elements/TextBox'
 import Meta from './elements/Meta'
 import Like from './elements/Like'
+import Link from '~/src/components/elements/Link'
+import { postsPath } from 'helpers/route/index'
 
 import style from './Item.css'
 
@@ -22,7 +25,9 @@ const BlogItem = ({item, likeAction}) => {
           <Meta meta={item.meta}/>
         </div>
         <div className={style.text}>
-          <Header as='h3' content={item.title} />
+          <Header as='h3'>
+            <Link to={postsPath(item.id)}>{item.title}</Link>
+          </Header>
           <TextBox text={item.post} newline />
           <Like likes={item.likes} likeAction={likeAction}/>
         </div>
@@ -39,7 +44,7 @@ BlogItem.propTypes = {
     title: PropTypes.string.isRequired,
     post: PropTypes.string.isRequired
   }),
-  likeAction: PropTypes.func.isRequired
+  likeAction: PropTypes.func // не Required, ибо проблемы с Post
 }
 
 export default BlogItem
