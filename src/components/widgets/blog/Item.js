@@ -6,12 +6,20 @@ import Image from './elements/Image'
 import TextBox from './elements/TextBox'
 import Meta from './elements/Meta'
 import Like from './elements/Like'
-import Link from '~/src/components/elements/Link'
+import Link from 'components/elements/Link'
 import { postsPath } from 'helpers/route/index'
 
 import style from './Item.css'
 
-const BlogItem = ({item, likeAction}) => {
+const makeLikeAction = (id, likeAction) => {
+  if (likeAction) {
+    return likeAction(id)
+  } else {
+    return () => console.log(`Like called without action for item ${id}!`)
+  }
+}
+
+const Item = ({item, likeAction}) => {
   return (
     <ListItem>
       <div className={style.flex}>
@@ -29,14 +37,14 @@ const BlogItem = ({item, likeAction}) => {
             <Link to={postsPath(item.id)}>{item.title}</Link>
           </Header>
           <TextBox text={item.post} newline />
-          <Like likes={item.likes} likeAction={likeAction}/>
+          <Like likes={item.likes} likeAction={makeLikeAction(item.id, likeAction)}/>
         </div>
       </div>
     </ListItem>
   )
 }
 
-BlogItem.propTypes = {
+Item.propTypes = {
   item: PropTypes.shape({
     image: PropTypes.shape(Image.propTypes).isRequired,
     meta: PropTypes.shape(Meta.propTypes).isRequired,
@@ -47,4 +55,4 @@ BlogItem.propTypes = {
   likeAction: PropTypes.func // не Required, ибо проблемы с Post
 }
 
-export default BlogItem
+export default Item

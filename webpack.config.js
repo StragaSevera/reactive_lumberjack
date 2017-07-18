@@ -38,7 +38,7 @@ module.exports = {
         test: /\.css$/,
         use: [
           'style-loader?sourceMap',
-           'css-loader' // отключаем модули
+          'css-loader' // отключаем модули для Семантика 
         ],
         include: fs.realpathSync('./vendor/semantic')
       },      

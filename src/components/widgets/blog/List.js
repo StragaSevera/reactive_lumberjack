@@ -15,7 +15,7 @@ class List extends React.Component {
             <Item
               item={item}
               key={item.id}
-              likeAction={this.props.likeAction(item.id)}
+              likeAction={this.props.likeAction}
             />
           )
         },
@@ -34,8 +34,8 @@ class List extends React.Component {
   }
 
   static propTypes = {
-    items: PropTypes.array.isRequired, // без Shape, ибо на входе еще нет сгенерированного likeAction
-    likeAction: PropTypes.func.isRequired
+    items: PropTypes.array.isRequired,
+    likeAction: PropTypes.func
   }
 }
 
